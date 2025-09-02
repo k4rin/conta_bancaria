@@ -2,13 +2,14 @@ import { ContaPoupanca } from './src/model/ContaPoupanca';
 import { ContaCorrente } from './src/model/ContaCorrente';
 import { colors } from './src/util/Colors';
 import leia = require('readline-sync');
+import { Conta } from './src/model/Conta';
 
 
 export function main(){
     let opcao: number;
     let continuar: boolean =true;
 
-    // Objeto da Classe ContaCorrente (Teste)
+     // Objeto da Classe ContaCorrente (Teste)
     const contacorrente: ContaCorrente = new ContaCorrente(2, 123, 1, "Mariana", 15000, 1000);
     contacorrente.visualizar();
     contacorrente.sacar(2000);
