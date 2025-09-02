@@ -1,3 +1,5 @@
+import { ContaPoupanca } from './src/model/ContaPoupanca';
+import { ContaCorrente } from './src/model/ContaCorrente';
 import { colors } from './src/util/Colors';
 import leia = require('readline-sync');
 
@@ -5,6 +7,22 @@ import leia = require('readline-sync');
 export function main(){
     let opcao: number;
     let continuar: boolean =true;
+
+    // Objeto da Classe ContaCorrente (Teste)
+    const contacorrente: ContaCorrente = new ContaCorrente(2, 123, 1, "Mariana", 15000, 1000);
+    contacorrente.visualizar();
+    contacorrente.sacar(2000);
+    contacorrente.visualizar();
+    contacorrente.depositar(1000);
+    contacorrente.visualizar();
+
+    // Objeto da Classe ContaPoupanca (teste)
+    const contapoupanca: ContaPoupanca = new ContaPoupanca(3, 123, 2, "Victor", 1000, 10);
+    contapoupanca.visualizar();
+    contapoupanca.sacar(200);
+    contapoupanca.visualizar();
+    contapoupanca.depositar(1000);
+    contapoupanca.visualizar();
 
     while(continuar){
         console.log(colors.bg.black, colors.fg.yellow,
