@@ -3,6 +3,8 @@ import { ContaCorrente } from './src/model/ContaCorrente';
 import { colors } from './src/util/Colors';
 import leia = require('readline-sync');
 import { ContaController } from './src/controller/ContaController';
+import { Conta } from './src/model/Conta';
+
 
 
 export function main(){
@@ -21,7 +23,7 @@ export function main(){
 
     
 
-    // Objeto da Classe ContaCorrente (Teste)
+     // Objeto da Classe ContaCorrente (Teste)
     const contacorrente: ContaCorrente = new ContaCorrente(2, 123, 1, "Mariana", 15000, 1000);
     contacorrente.visualizar();
     contacorrente.sacar(2000);
