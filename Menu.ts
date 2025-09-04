@@ -24,7 +24,7 @@ export function main(){
     let aniversario: number;
     let tiposContas = ["Conta Corrente", "Conta Poupanca"];
 
-
+    while(true){
         console.log(colors.bg.black, colors.fg.yellow,
                     "*****************************************************");
         console.log("                                                     ");
