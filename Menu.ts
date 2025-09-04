@@ -13,31 +13,16 @@ export function main(){
     let numero: number;
     let agencia: number;
     let tipo: number;
+    let valor: number;
     let titular: string;
+    let numeroOrigem: number;
+    let numeroDestino: number;
     let saldo: number;
     let limite: number;
     let aniversario: number;
     let tiposContas = ["Conta Corrente", "Conta Poupanca"];
 
-    
-
-    // Objeto da Classe ContaCorrente (Teste)
-    const contacorrente: ContaCorrente = new ContaCorrente(2, 123, 1, "Mariana", 15000, 1000);
-    contacorrente.visualizar();
-    contacorrente.sacar(2000);
-    contacorrente.visualizar();
-    contacorrente.depositar(1000);
-    contacorrente.visualizar();
-
-    // Objeto da Classe ContaPoupanca (teste)
-    const contapoupanca: ContaPoupanca = new ContaPoupanca(3, 123, 2, "Victor", 1000, 10);
-    contapoupanca.visualizar();
-    contapoupanca.sacar(200);
-    contapoupanca.visualizar();
-    contapoupanca.depositar(1000);
-    contapoupanca.visualizar();
-
-    while(true){
+     while(true){
         console.log(colors.bg.black, colors.fg.yellow,
                     "*****************************************************");
         console.log("                                                     ");
@@ -158,15 +143,35 @@ export function main(){
             break;
             case 6:
                 console.log(colors.fg.whitestrong,'\n\nSaque\n\n', colors.reset);
-                 keyPress()
+                
+                console.log("Digite o numero da conta: ");
+                numero = leia.questionInt("");
+                console.log("Digite o valor do saque (R$): ");
+                valor = leia.questionFloat("");
+                contas.sacar(numero, valor);
+                keyPress()
             break;
             case 7:
                 console.log(colors.fg.whitestrong,'\n\nDepósito\n\n', colors.reset);
-                 keyPress()
+                
+                console.log("Digite o numero da conta: ");
+                numero = leia.questionInt("");
+                console.log("Digite o valor do depósito (R$): ");
+                valor = leia.questionFloat("");
+                contas.depositar(numero, valor);
+                keyPress()
             break;
             case 8:
                 console.log(colors.fg.whitestrong,'\n\nTranferencia entre contas\n\n', colors.reset);
-                 keyPress()
+                 
+                console.log("Digite o numero da conta de origem: ");
+                let numeroOrigem = leia.questionInt("");
+                console.log("Digite o numero da conta de destino: "); 
+                let numeroDestino = leia.questionInt("");
+                console.log("Digite o valor da transferência (R$): ");
+                valor = leia.questionFloat("");
+                contas.transferir(numeroOrigem, numeroDestino, valor);
+                keyPress()
             break;
              case 9:
             console.log(colors.fg.greenstrong,"\nOrion Bank - Inovação que ilumina o seu futuro.");

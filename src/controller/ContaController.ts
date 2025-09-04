@@ -3,17 +3,24 @@ import { ContaRepository } from "../repository/ContaRepository";
 import { colors } from "../util/Colors";
 
 export class ContaController implements ContaRepository {
-    sacar(numero: number, valor: number): void {
-        throw new Error("Method not implemented.");
-    }
-    depositar(numero: number, valor: number): void {
-        throw new Error("Method not implemented.");
-    }
-    transferir(numeroOrigem: number, numeroDestino: number, valor: number): void {
-        throw new Error("Method not implemented.");
-    }
+    public transferir(numeroOrigem: number, numeroDestino: number, valor: number): void {
+        
+        let contaOrigem = this.buscarNoArray(numeroOrigem);
+        let contaDestino = this.buscarNoArray(numeroDestino);
+        
+        if (contaOrigem != null && contaDestino != null) {
+            if (contaOrigem.sacar(valor) == true) {
+                contaDestino.depositar(valor);
+                console.log(colors.fg.green, "Transferência de R$ " + valor.toFixed(2) + " da conta " + numeroOrigem + " para a conta " + numeroDestino + " realizado com sucesso!", colors.reset);
+            } else {
+                console.log(colors.fg.red, "Saldo insuficiente na conta " + numeroOrigem + "!", colors.reset);
+            }
+    
+            }
+        }
 
-    private listaContas: Array<Conta> = new Array<Conta>();
+
+private listaContas: Array<Conta> = new Array<Conta>();
     numero: number = 0;
 
     procurarPorNumero(numero: number): void {
@@ -71,4 +78,31 @@ export class ContaController implements ContaRepository {
         }
         return null;
     }
-}
+
+
+   public sacar(numero: number, valor: number): void {
+
+        let conta = this.buscarNoArray(numero);
+
+        if (conta != null) {
+            if (conta.sacar(valor) ==true) {
+                console.log(colors.fg.green, "Saque de R$ " + valor.toFixed(2) + " da conta " + numero + " realizado com sucesso!", colors.reset);
+            } else {
+                console.log(colors.fg.red, "A conta " + numero + " não foi encontrada!", colors.reset);
+            }
+        }
+   }
+    public depositar(numero: number, valor: number): void {
+        let conta = this.buscarNoArray(numero);
+
+        if (conta != null) {
+             conta.depositar(valor); 
+                console.log(colors.fg.green, "Depósito de R$ " + valor.toFixed(2) + " na conta " + numero + " realizado com sucesso!", colors.reset);
+            } else {
+                console.log(colors.fg.red, "A conta " + numero + " não foi encontrada!", colors.reset);
+            }
+        }
+ }
+    
+
+
