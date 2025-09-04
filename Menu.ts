@@ -3,6 +3,8 @@ import { ContaCorrente } from './src/model/ContaCorrente';
 import { colors } from './src/util/Colors';
 import leia = require('readline-sync');
 import { ContaController } from './src/controller/ContaController';
+import { Conta } from './src/model/Conta';
+
 
 
 export function main(){
@@ -22,7 +24,7 @@ export function main(){
     let aniversario: number;
     let tiposContas = ["Conta Corrente", "Conta Poupanca"];
 
-     while(true){
+
         console.log(colors.bg.black, colors.fg.yellow,
                     "*****************************************************");
         console.log("                                                     ");
